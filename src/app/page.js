@@ -164,6 +164,35 @@ export default function Home() {
 
       </section>
 
+      {/* DOUBLE OVERLAPPING ANGLED TICKER RIBBONS (TRANSITION BETWEEN BLUE HERO & WHITE SERVICES) */}
+      <div className="relative w-full py-8 bg-[#2B38F6] overflow-hidden select-none z-30">
+        
+        {/* Ribbon 1 (Lower Layer: Rotated +1.5deg) */}
+        <div className="w-[110%] -ml-4 bg-[#CCFF00] text-black py-4 border-y-4 border-black font-black text-base sm:text-lg tracking-wider uppercase transform rotate-[1.5deg] shadow-lg">
+          <div className="animate-marquee whitespace-nowrap flex items-center gap-10">
+            {[...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems].map((item, idx) => (
+              <div key={idx} className="flex items-center gap-10">
+                <span>{item}</span>
+                <span className="text-black text-sm">|</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Ribbon 2 (Upper Layer: Rotated -2deg, Overlapping with Negative Margin) */}
+        <div className="w-[110%] -ml-4 bg-[#CCFF00] text-black py-4 border-y-4 border-black font-black text-base sm:text-lg tracking-wider uppercase transform -rotate-[2deg] -mt-12 shadow-2xl z-10 relative">
+          <div className="animate-marquee whitespace-nowrap flex items-center gap-10" style={{ animationDirection: "reverse" }}>
+            {[...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems].map((item, idx) => (
+              <div key={idx} className="flex items-center gap-10">
+                <span>{item}</span>
+                <span className="text-black text-sm">|</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
       {/* SERVICES SECTION: CREATIVE SOLUTIONS JUST FOR YOU (MATCHING REFERENCE SCREENSHOT) */}
       <section id="services" className="w-full bg-[#FAFAFA] text-black py-20 px-6 sm:px-12 relative z-30">
         <div className="max-w-7xl mx-auto space-y-12">
