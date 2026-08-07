@@ -164,28 +164,28 @@ export default function Home() {
 
       </section>
 
-      {/* DOUBLE OVERLAPPING ANGLED TICKER RIBBONS (TRANSITION BETWEEN BLUE HERO & WHITE SERVICES) */}
-      <div className="relative w-full py-8 bg-[#2B38F6] overflow-hidden select-none z-30">
+      {/* DOUBLE OVERLAPPING ANGLED TICKER RIBBONS (FULL-BLEED FULL WIDTH TRANSITION) */}
+      <div className="relative w-full py-12 bg-[#2B38F6] overflow-hidden select-none z-30">
         
-        {/* Ribbon 1 (Lower Layer: Rotated +1.5deg) */}
-        <div className="w-[110%] -ml-4 bg-[#CCFF00] text-black py-4 border-y-4 border-black font-black text-base sm:text-lg tracking-wider uppercase transform rotate-[1.5deg] shadow-lg">
-          <div className="animate-marquee whitespace-nowrap flex items-center gap-10">
-            {[...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems].map((item, idx) => (
-              <div key={idx} className="flex items-center gap-10">
+        {/* Ribbon 1 (Lower Layer: Rotated +2deg, Extended 150% Width) */}
+        <div className="w-[150%] -ml-[25%] bg-[#CCFF00] text-black py-4 sm:py-5 border-y-4 border-black font-black text-lg sm:text-xl tracking-wider uppercase transform rotate-[2deg] shadow-xl">
+          <div className="animate-marquee whitespace-nowrap flex items-center gap-12">
+            {[...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems].map((item, idx) => (
+              <div key={idx} className="flex items-center gap-12">
                 <span>{item}</span>
-                <span className="text-black text-sm">|</span>
+                <span className="text-black font-black text-lg">|</span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Ribbon 2 (Upper Layer: Rotated -2deg, Overlapping with Negative Margin) */}
-        <div className="w-[110%] -ml-4 bg-[#CCFF00] text-black py-4 border-y-4 border-black font-black text-base sm:text-lg tracking-wider uppercase transform -rotate-[2deg] -mt-12 shadow-2xl z-10 relative">
-          <div className="animate-marquee whitespace-nowrap flex items-center gap-10" style={{ animationDirection: "reverse" }}>
-            {[...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems].map((item, idx) => (
-              <div key={idx} className="flex items-center gap-10">
+        {/* Ribbon 2 (Upper Layer: Rotated -2.5deg, Overlapping with Negative Margin, Extended 150% Width) */}
+        <div className="w-[150%] -ml-[25%] bg-[#CCFF00] text-black py-4 sm:py-5 border-y-4 border-black font-black text-lg sm:text-xl tracking-wider uppercase transform -rotate-[2.5deg] -mt-14 shadow-2xl z-10 relative">
+          <div className="animate-marquee whitespace-nowrap flex items-center gap-12" style={{ animationDirection: "reverse" }}>
+            {[...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems].map((item, idx) => (
+              <div key={idx} className="flex items-center gap-12">
                 <span>{item}</span>
-                <span className="text-black text-sm">|</span>
+                <span className="text-black font-black text-lg">|</span>
               </div>
             ))}
           </div>
