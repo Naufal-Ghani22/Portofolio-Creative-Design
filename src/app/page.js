@@ -10,14 +10,9 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const tickerItems = [
-    "UI/UX DESIGN",
-    "FRONTEND REACT",
-    "KOTLIN MOBILE",
-    "LARAVEL BACKEND",
-    "FIGMA SYSTEM",
-    "HACKATHON WINNER",
-    "ACCESSIBILITY (A11Y)",
-    "B2B SAAS DASHBOARD"
+    "CREATIVE DESIGN",
+    "SOLVER DESIGN",
+    "PERFECT COMMUNICATION"
   ];
 
   return (
@@ -28,8 +23,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 text-white hover:text-[#CCFF00] transition-colors">
-            <div className="w-8 h-8 rounded-full bg-[#CCFF00] flex items-center justify-center text-[#000000] font-black text-xs">
+          <a href="#" className="flex items-center gap-2.5 text-white hover:text-[#CCFF00] transition-colors">
+            <div className="w-9 h-9 rounded-full bg-[#CCFF00] flex items-center justify-center text-[#000000] font-black text-sm shadow-md">
               NG
             </div>
             <span className="font-display font-black text-xl tracking-tighter">NAUFAL GHANI</span>
@@ -76,15 +71,15 @@ export default function Home() {
       </header>
 
       {/* HERO MAIN SECTION */}
-      <section className="relative pt-6 sm:pt-12 pb-24 px-6 sm:px-12 max-w-7xl mx-auto min-h-[75vh] flex flex-col justify-between">
+      <section className="relative pt-6 sm:pt-10 pb-0 px-6 sm:px-12 max-w-7xl mx-auto min-h-[80vh] flex flex-col justify-between">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
           
           {/* Left Content Area */}
-          <div className="lg:col-span-8 space-y-8 z-10">
+          <div className="lg:col-span-7 space-y-8 z-10 pb-12 sm:pb-16">
             
             {/* Main Punchy Extra-Bold Typography */}
-            <div className="relative space-y-2">
+            <div className="relative space-y-3">
               
               {/* Floating Stitched Lime Badge */}
               <motion.div 
@@ -93,7 +88,7 @@ export default function Home() {
                 transition={{ duration: 0.5 }}
                 className="inline-block lime-badge px-4 py-1.5 rounded-full text-xs tracking-wider mb-2 shadow-lg"
               >
-                HYBRID UI/UX ENGINEER
+                BEAST DESIGN
               </motion.div>
 
               <motion.h1 
@@ -112,7 +107,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-white/90 text-sm sm:text-base max-w-xl leading-relaxed font-sans font-medium"
+              className="text-white/90 text-sm sm:text-base max-w-lg leading-relaxed font-sans font-medium"
             >
               Selamat datang di studio portofolio Naufal Ghani. Tempat warna dan kebebasan visual bertemu dengan ketajaman logika koding React, Kotlin, dan Laravel untuk menghasilkan antarmuka solutif dan tak terlupakan.
             </motion.p>
@@ -144,45 +139,23 @@ export default function Home() {
 
           </div>
 
-          {/* Right Cutout Character / Visual Spotlight Area */}
-          <div className="lg:col-span-4 relative flex justify-center items-center">
+          {/* Right Area: Naufal Photo (Positioned exactly like reference Image 2) */}
+          <div className="lg:col-span-5 relative flex justify-center items-end self-end mt-4 lg:mt-0 z-20">
             
-            {/* Glowing Lime Radial Behind Character */}
-            <div className="absolute w-72 h-72 sm:w-96 sm:h-96 bg-[#CCFF00]/30 rounded-full blur-3xl pointer-events-none"></div>
+            {/* Radial Lime Glow Behind Photo */}
+            <div className="absolute bottom-0 w-72 h-72 sm:w-96 sm:h-96 bg-[#CCFF00]/30 rounded-full blur-3xl pointer-events-none"></div>
 
             <motion.div 
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="relative z-10 text-center"
+              className="relative z-20 flex justify-center items-end"
             >
-              {/* Character Illustration / High-Impact Avatar Card */}
-              <div className="w-64 h-80 sm:w-72 sm:h-96 rounded-3xl bg-[#CCFF00] border-4 border-black p-4 flex flex-col justify-between shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] rotate-2 hover:rotate-0 transition-transform duration-300">
-                
-                <div className="flex items-center justify-between text-black font-black text-xs uppercase">
-                  <span>UI/UX DESIGNER</span>
-                  <Sparkles size={16} />
-                </div>
-
-                {/* Character Photo / Avatar Representation */}
-                <div className="relative flex-1 flex items-center justify-center my-2 overflow-hidden rounded-2xl bg-[#2B38F6] border-2 border-black">
-                  <img 
-                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop" 
-                    alt="Naufal Ghani Avatar" 
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute bottom-2 left-2 bg-black text-[#CCFF00] px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider">
-                    50+ DESIGNS
-                  </div>
-                </div>
-
-                <div className="text-black text-left font-black text-xs uppercase tracking-tight">
-                  <div>NAUFAL GHANI</div>
-                  <div className="text-[10px] font-bold text-black/70">20+ CODED APPS • 20+ AWARDS</div>
-                </div>
-
-              </div>
-
+              <img 
+                src="/naufal-hero.png" 
+                alt="Naufal Ghani" 
+                className="h-[400px] sm:h-[500px] lg:h-[560px] w-auto object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.5)] filter brightness-[1.02] contrast-[1.02]"
+              />
             </motion.div>
 
           </div>
@@ -191,16 +164,33 @@ export default function Home() {
 
       </section>
 
-      {/* MARQUEE TICKER TAPE BANNER (BOTTOM OF HERO) */}
-      <div className="w-full bg-[#CCFF00] text-black py-4 border-y-4 border-black overflow-hidden font-black text-sm tracking-wider uppercase">
-        <div className="animate-marquee whitespace-nowrap flex items-center gap-8">
-          {[...tickerItems, ...tickerItems, ...tickerItems].map((item, idx) => (
-            <div key={idx} className="flex items-center gap-8">
-              <span>{item}</span>
-              <span className="w-2 h-2 rounded-full bg-black"></span>
-            </div>
-          ))}
+      {/* DOUBLE OVERLAPPING ANGLED TICKER RIBBONS (MATCHING REFERENCE IMAGE) */}
+      <div className="relative w-full py-8 bg-[#2B38F6] overflow-hidden select-none z-30">
+        
+        {/* Ribbon 1 (Lower Layer: Rotated +1.5deg) */}
+        <div className="w-[110%] -ml-4 bg-[#CCFF00] text-black py-4 border-y-4 border-black font-black text-base sm:text-lg tracking-wider uppercase transform rotate-[1.5deg] shadow-lg">
+          <div className="animate-marquee whitespace-nowrap flex items-center gap-10">
+            {[...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems].map((item, idx) => (
+              <div key={idx} className="flex items-center gap-10">
+                <span>{item}</span>
+                <span className="text-black text-sm">|</span>
+              </div>
+            ))}
+          </div>
         </div>
+
+        {/* Ribbon 2 (Upper Layer: Rotated -2deg, Overlapping with Negative Margin) */}
+        <div className="w-[110%] -ml-4 bg-[#CCFF00] text-black py-4 border-y-4 border-black font-black text-base sm:text-lg tracking-wider uppercase transform -rotate-[2deg] -mt-12 shadow-2xl z-10 relative">
+          <div className="animate-marquee whitespace-nowrap flex items-center gap-10" style={{ animationDirection: "reverse" }}>
+            {[...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems].map((item, idx) => (
+              <div key={idx} className="flex items-center gap-10">
+                <span>{item}</span>
+                <span className="text-black text-sm">|</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
 
     </div>
