@@ -164,34 +164,187 @@ export default function Home() {
 
       </section>
 
-      {/* DOUBLE OVERLAPPING ANGLED TICKER RIBBONS (MATCHING REFERENCE IMAGE) */}
-      <div className="relative w-full py-8 bg-[#2B38F6] overflow-hidden select-none z-30">
-        
-        {/* Ribbon 1 (Lower Layer: Rotated +1.5deg) */}
-        <div className="w-[110%] -ml-4 bg-[#CCFF00] text-black py-4 border-y-4 border-black font-black text-base sm:text-lg tracking-wider uppercase transform rotate-[1.5deg] shadow-lg">
-          <div className="animate-marquee whitespace-nowrap flex items-center gap-10">
-            {[...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems].map((item, idx) => (
-              <div key={idx} className="flex items-center gap-10">
-                <span>{item}</span>
-                <span className="text-black text-sm">|</span>
+      {/* SERVICES SECTION: CREATIVE SOLUTIONS JUST FOR YOU (MATCHING REFERENCE SCREENSHOT) */}
+      <section id="services" className="w-full bg-[#FAFAFA] text-black py-20 px-6 sm:px-12 relative z-30">
+        <div className="max-w-7xl mx-auto space-y-12">
+          
+          {/* Section Header */}
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+            <div className="space-y-2">
+              <div className="flex flex-wrap items-center gap-3">
+                <h2 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight uppercase text-black">
+                  CREATIVE
+                </h2>
+                <span className="inline-block px-5 py-1.5 rounded-full bg-[#2B38F6] text-white border-2 border-dashed border-black text-xl sm:text-2xl font-black tracking-wider uppercase shadow-md">
+                  SOLUTIONS
+                </span>
               </div>
-            ))}
-          </div>
-        </div>
+              <h2 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight uppercase text-black">
+                JUST FOR YOU
+              </h2>
+            </div>
 
-        {/* Ribbon 2 (Upper Layer: Rotated -2deg, Overlapping with Negative Margin) */}
-        <div className="w-[110%] -ml-4 bg-[#CCFF00] text-black py-4 border-y-4 border-black font-black text-base sm:text-lg tracking-wider uppercase transform -rotate-[2deg] -mt-12 shadow-2xl z-10 relative">
-          <div className="animate-marquee whitespace-nowrap flex items-center gap-10" style={{ animationDirection: "reverse" }}>
-            {[...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems].map((item, idx) => (
-              <div key={idx} className="flex items-center gap-10">
-                <span>{item}</span>
-                <span className="text-black text-sm">|</span>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 lg:max-w-md">
+              <p className="text-black/80 text-xs sm:text-sm font-semibold leading-relaxed">
+                Di studio Naufal Ghani, kami menyediakan rangkaian layanan kreatif komprehensif yang dirancang untuk memanifestasikan visi bisnis Anda secara memukau.
+              </p>
+              
+              <a 
+                href="#projects" 
+                className="shrink-0 px-6 py-3 rounded-full text-xs font-black uppercase tracking-wider bg-[#CCFF00] text-black border-2 border-black hover:scale-105 hover:shadow-lg transition-all duration-300"
+              >
+                VIEW ALL
+              </a>
+            </div>
+          </div>
+
+          {/* Services Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-4">
+            
+            {/* Service 1: Graphic Design */}
+            <div className="rounded-3xl bg-white p-8 border-2 border-black/10 shadow-xl flex flex-col justify-between space-y-8 hover:border-[#2B38F6] transition-all duration-300 group">
+              <div className="space-y-3">
+                <h3 className="font-display font-black text-2xl sm:text-3xl tracking-tight uppercase text-black group-hover:text-[#2B38F6] transition-colors">
+                  GRAPHIC DESIGN
+                </h3>
+                <p className="text-xs text-black/70 font-semibold leading-relaxed">
+                  Tingkatkan identitas visual Anda melalui desain grafis kustom, aset cetak, ilustrasi digital, dan komunikasi visual yang tajam.
+                </p>
               </div>
-            ))}
-          </div>
-        </div>
 
-      </div>
+              {/* Inner Preview Box */}
+              <div className="w-full h-44 rounded-2xl bg-[#2B38F6] border-2 border-black p-4 flex flex-col justify-between relative overflow-hidden group-hover:shadow-lg transition-shadow">
+                <div className="w-full h-full rounded-xl overflow-hidden bg-black/20 flex items-center justify-center">
+                  <img 
+                    src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=800&auto=format&fit=crop" 
+                    alt="Graphic Design Preview" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="mt-2 text-center">
+                  <span className="inline-block px-4 py-1 rounded-full bg-black text-[#CCFF00] text-[10px] font-black uppercase tracking-wider border border-white/20">
+                    VIEWS
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Service 2: Brand Strategy */}
+            <div className="rounded-3xl bg-white p-8 border-2 border-black/10 shadow-xl flex flex-col justify-between space-y-8 hover:border-[#2B38F6] transition-all duration-300 group">
+              <div className="space-y-3">
+                <h3 className="font-display font-black text-2xl sm:text-3xl tracking-tight uppercase text-black group-hover:text-[#2B38F6] transition-colors">
+                  BRAND STRATEGY
+                </h3>
+                <p className="text-xs text-black/70 font-semibold leading-relaxed">
+                  Bangun identitas brand yang tak terlupakan, pedoman panduan visual (brand guidelines), dan positioning pasar yang berdampak.
+                </p>
+              </div>
+
+              {/* Inner Preview Box */}
+              <div className="w-full h-44 rounded-2xl bg-[#2B38F6] border-2 border-black p-4 flex flex-col justify-between relative overflow-hidden group-hover:shadow-lg transition-shadow">
+                <div className="w-full h-full rounded-xl overflow-hidden bg-black/20 flex items-center justify-center">
+                  <img 
+                    src="https://images.unsplash.com/photo-1600508774634-4e11d34730e2?q=80&w=800&auto=format&fit=crop" 
+                    alt="Brand Strategy Preview" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="mt-2 text-center">
+                  <span className="inline-block px-4 py-1 rounded-full bg-black text-[#CCFF00] text-[10px] font-black uppercase tracking-wider border border-white/20">
+                    VIEWS
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Service 3: Advertising Design */}
+            <div className="rounded-3xl bg-white p-8 border-2 border-black/10 shadow-xl flex flex-col justify-between space-y-8 hover:border-[#2B38F6] transition-all duration-300 group">
+              <div className="space-y-3">
+                <h3 className="font-display font-black text-2xl sm:text-3xl tracking-tight uppercase text-black group-hover:text-[#2B38F6] transition-colors">
+                  ADVERTISING DESIGN
+                </h3>
+                <p className="text-xs text-black/70 font-semibold leading-relaxed">
+                  Desain materi iklan dan kampanye pemasaran berkonversi tinggi yang memikat audiens sasaran Anda secara instan.
+                </p>
+              </div>
+
+              {/* Inner Preview Box */}
+              <div className="w-full h-44 rounded-2xl bg-[#2B38F6] border-2 border-black p-4 flex flex-col justify-between relative overflow-hidden group-hover:shadow-lg transition-shadow">
+                <div className="w-full h-full rounded-xl overflow-hidden bg-black/20 flex items-center justify-center">
+                  <img 
+                    src="https://images.unsplash.com/photo-1542744094-3a3172720177?q=80&w=800&auto=format&fit=crop" 
+                    alt="Advertising Design Preview" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="mt-2 text-center">
+                  <span className="inline-block px-4 py-1 rounded-full bg-black text-[#CCFF00] text-[10px] font-black uppercase tracking-wider border border-white/20">
+                    VIEWS
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Service 4: Social Media Specialist */}
+            <div className="rounded-3xl bg-white p-8 border-2 border-black/10 shadow-xl flex flex-col justify-between space-y-8 hover:border-[#2B38F6] transition-all duration-300 group">
+              <div className="space-y-3">
+                <h3 className="font-display font-black text-2xl sm:text-3xl tracking-tight uppercase text-black group-hover:text-[#2B38F6] transition-colors">
+                  SOCIAL MEDIA SPECIALIST
+                </h3>
+                <p className="text-xs text-black/70 font-semibold leading-relaxed">
+                  Strategi konten media sosial yang menarik, pembuatan mikro-slide komedi/edukasi, dan tata visual feed yang konsisten.
+                </p>
+              </div>
+
+              {/* Inner Preview Box */}
+              <div className="w-full h-44 rounded-2xl bg-[#2B38F6] border-2 border-black p-4 flex flex-col justify-between relative overflow-hidden group-hover:shadow-lg transition-shadow">
+                <div className="w-full h-full rounded-xl overflow-hidden bg-black/20 flex items-center justify-center">
+                  <img 
+                    src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800&auto=format&fit=crop" 
+                    alt="Social Media Preview" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="mt-2 text-center">
+                  <span className="inline-block px-4 py-1 rounded-full bg-black text-[#CCFF00] text-[10px] font-black uppercase tracking-wider border border-white/20">
+                    VIEWS
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Service 5: Pitch Deck Presentation (Lime Green Highlight Card matching Reference Screenshot!) */}
+            <div className="rounded-3xl bg-[#CCFF00] p-8 border-2 border-black shadow-xl flex flex-col justify-between space-y-8 md:col-span-2 lg:col-span-1 group hover:scale-[1.02] transition-all duration-300">
+              <div className="space-y-3">
+                <h3 className="font-display font-black text-2xl sm:text-3xl tracking-tight uppercase text-black">
+                  PITCH DECK PRESENTATION
+                </h3>
+                <p className="text-xs text-black/80 font-bold leading-relaxed">
+                  Desain slide presentasi bisnis dan pitch deck investor yang persuasif, profesional, dan siap memikat pendanaan.
+                </p>
+              </div>
+
+              {/* Inner Preview Box (Black Contrast) */}
+              <div className="w-full h-44 rounded-2xl bg-[#000000] border-2 border-black p-4 flex flex-col justify-between relative overflow-hidden">
+                <div className="w-full h-full rounded-xl overflow-hidden bg-white/10 flex items-center justify-center">
+                  <img 
+                    src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format&fit=crop" 
+                    alt="Pitch Deck Preview" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="mt-2 text-center">
+                  <span className="inline-block px-4 py-1 rounded-full bg-[#CCFF00] text-black text-[10px] font-black uppercase tracking-wider border border-black">
+                    VIEWS
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
 
     </div>
   );
