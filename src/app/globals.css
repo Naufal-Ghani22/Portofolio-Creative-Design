@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-plus-jakarta-sans), sans-serif;
+  --font-display: var(--font-outfit), sans-serif;
+  
+  --color-[#2B38F6]: #2B38F6;
+  --color-[#CCFF00]: #CCFF00;
+  --color-[#000000]: #000000;
+}
+
+/* Custom Base Styles */
+body {
+  background-color: #2B38F6;
+  color: #FFFFFF;
+  overflow-x: hidden;
+}
+
+/* Vibrant Stitched Badge Style */
+.lime-badge {
+  background-color: #CCFF00;
+  color: #000000;
+  border: 2px dashed #000000;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+/* Marquee Infinite Scroll Animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: 200%;
+  animation: marquee 20s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2B38F6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CCFF00;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
