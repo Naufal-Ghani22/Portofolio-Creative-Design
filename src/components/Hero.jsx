@@ -73,22 +73,19 @@ export default function Hero() {
 
         </div>
 
-        {/* Right Area: Naufal Photo Spotlight (Clean & Perfectly Proportional) */}
-        <div className="lg:col-span-5 relative flex justify-center items-end self-end mt-4 lg:mt-0 z-20 -mb-10 sm:-mb-14 lg:-mb-16">
+        {/* Right Area: Naufal Photo Spotlight (Clean Clean No Shadows & Shifted Crop) */}
+        <div className="lg:col-span-5 relative flex justify-center items-end self-end mt-4 lg:mt-0 z-20 overflow-hidden h-[480px] sm:h-[560px] lg:h-[630px]">
           
-          {/* Radial Lime Glow Behind Photo */}
-          <div className="absolute bottom-0 w-80 h-80 sm:w-[460px] sm:h-[460px] bg-[#CCFF00]/30 rounded-full blur-3xl pointer-events-none"></div>
-
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="relative z-20 flex justify-center items-end"
+            className="relative z-20 flex justify-center items-end w-full h-full pt-6"
           >
             <img 
               src="/naufal-hero.png" 
               alt="Naufal Ghani" 
-              className="h-[480px] sm:h-[600px] lg:h-[660px] xl:h-[700px] w-auto object-contain object-bottom filter brightness-[1.03] contrast-[1.02]"
+              className="h-[520px] sm:h-[640px] lg:h-[720px] max-w-none w-auto object-cover object-top translate-y-3"
             />
           </motion.div>
 
