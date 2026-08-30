@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useRef, useState } from "react";
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import { Plus, Download, ChevronDown, Sparkles, Star, Circle, Sun, Zap } from "lucide-react";
 import { Float } from "@/components/Decor";
 import { ScrollRotate, VelocitySpin, TiltCard, ScrollVelocityDrift } from "@/components/ScrollMotion";
@@ -33,6 +33,9 @@ const TIP_STEPS = [
   { color: "#FF4D8D", drop: 20, size: 24 },
   { color: "#FFB300", drop: 30, size: 21 },
 ];
+
+// Kata raksasa yang melintas pelan di background Hero — ganti isinya sesukamu.
+const GIANT_WORDS = ["CHEERFUL", "WITH", "CREATIVE", "GRAPHIC", "DESIGN", "UI/UX", "BRANDING", "MOTION"];
 
 // Lapisan dekor "jauh" vs "dekat" biar lebih terasa kedalamannya.
 function DecorLayer({ scrollYProgress, decor }) {
@@ -72,6 +75,27 @@ export default function Hero() {
   // Tangga transisi "kabur" naik saat kita scroll menuju Creative Solutions.
   const tipY = useTransform(scrollYProgress, [0, 1], [0, -140]);
 
+  // Spotlight "membuka fokus": lingkaran tajam mengikuti pointer (spring lembut).
+  const spotXT = useMotionValue(-30);
+  const spotYT = useMotionValue(-30);
+  const spotX = useSpring(spotXT, { stiffness: 260, damping: 30, mass: 0.6 });
+  const spotY = useSpring(spotYT, { stiffness: 260, damping: 30, mass: 0.6 });
+  const sxStr = useTransform(spotX, (v) => `${Math.round(v)}%`);
+  const syStr = useTransform(spotY, (v) => `${Math.round(v)}%`);
+  const [touched, setTouched] = useState(false);
+
+  const handlePointerMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    spotXT.set(((e.clientX - rect.left) / rect.width) * 100);
+    spotYT.set(((e.clientY - rect.top) / rect.height) * 100);
+    if (!touched) setTouched(true);
+  };
+
+  const handlePointerLeave = () => {
+    spotXT.set(-30);
+    spotYT.set(-30);
+  };
+
   return (
     <section ref={sectionRef} id="about" className="relative pt-2 sm:pt-4 pb-0 px-6 sm:px-12 max-w-7xl mx-auto">
 
@@ -98,6 +122,32 @@ export default function Hero() {
           </VelocitySpin>
         </div>
       </ScrollRotate>
+
+      {/* Teks raksasa background — melintas horizontal tanpa henti, opasitas sangat rendah */}
+      <div
+        className="absolute inset-0 z-[1] -rotate-2 pointer-events-none overflow-hidden flex items-center opacity-[0.06]"
+        aria-hidden="true"
+      >
+        <motion.div
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ duration: 46, repeat: Infinity, ease: "linear" }}
+          className="flex whitespace-nowrap will-change-transform"
+        >
+          {[0, 1].map((half) => (
+            <div key={half} className="flex items-center gap-10 pr-10">
+              {GIANT_WORDS.map((word, i) => (
+                <span
+                  key={i}
+                  className="font-display font-black uppercase leading-none text-[clamp(6.5rem,16vw,15rem)] tracking-tight text-white"
+                  style={i % 2 ? { WebkitTextStroke: "2px #fff" } : {}}
+                >
+                  {word}
+                </span>
+              ))}
+            </div>
+          ))}
+        </motion.div>
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
 
@@ -171,7 +221,7 @@ export default function Hero() {
           >
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-black text-xs uppercase tracking-wider bg-[#CCFF00] text-[#000000] hover:scale-105 hover:shadow-[0_0_30px_rgba(204,255,0,0.6)] transition-all duration-300"
+              className="pulse-glow inline-flex items-center gap-2 px-8 py-4 rounded-full font-black text-xs uppercase tracking-wider bg-[#CCFF00] text-[#000000] hover:scale-105 transition-all duration-300"
             >
               GET STARTED
               <Plus size={16} className="bg-black text-[#CCFF00] rounded-full p-0.5" />
@@ -189,46 +239,72 @@ export default function Hero() {
 
         </motion.div>
 
-        {/* Right Area: Naufal Photo Spotlight — 3D tilt ikut mouse */}
-        <div className="lg:col-span-5 relative flex justify-center items-end self-end mt-4 lg:mt-0 z-20 -mb-10 sm:-mb-14 lg:-mb-16">
+        {/* Right Area: Naufal Photo Poster — siluet blur lime + figur tajam + spotlight pointer */}
+        <div className="lg:col-span-5 relative z-20 mt-4 lg:mt-0 self-end">
+          <TiltCard max={7} className="relative flex">
+            <div
+              onPointerMove={handlePointerMove}
+              onPointerLeave={handlePointerLeave}
+              className="relative w-full overflow-hidden rounded-[2rem] border-4 border-black shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] h-[420px] sm:h-[540px] lg:h-[560px] xl:h-[620px] bg-[#2B38F6]"
+            >
+              {/* Aurora conic ring — rotasi ikut scroll + spin otomatis */}
+              <motion.div
+                style={{ rotate: glowRotate }}
+                className="absolute -inset-10 rounded-full pointer-events-none"
+                aria-hidden="true"
+              >
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+                  className="w-full h-full rounded-full opacity-30"
+                  style={{ background: "conic-gradient(#CCFF00,#00E5FF,#FF4D8D,#FFB300,#CCFF00)" }}
+                />
+              </motion.div>
 
-          {/* Aurora conic ring — berputar pelan ikut scroll + spin otomatis */}
-          <motion.div
-            style={{ rotate: glowRotate }}
-            className="absolute -bottom-10 w-80 h-80 sm:w-[470px] sm:h-[470px] rounded-full blur-2xl pointer-events-none"
-            aria-hidden="true"
-          >
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-              className="w-full h-full rounded-full opacity-40"
-              style={{ background: "conic-gradient(#CCFF00,#00E5FF,#FF4D8D,#FFB300,#CCFF00)" }}
-            />
-          </motion.div>
+              {/* Glow lime — menyerang saat scroll cepat */}
+              <ScrollVelocityDrift max={26} className="absolute inset-0 bg-[#CCFF00]/20 blur-3xl pointer-events-none" />
 
-          {/* Radial glow — menyerang saat scroll cepat */}
-          <ScrollVelocityDrift
-            max={30}
-            className="absolute bottom-0 w-80 h-80 sm:w-[460px] sm:h-[460px] bg-[#CCFF00]/25 rounded-full blur-3xl pointer-events-none"
-          />
+              {/* LAPIS SILUET — foto besar di-blur dengan tone hijau seperti teks */}
+              <div className="absolute inset-0 pointer-events-none">
+                <motion.img
+                  style={{ y: photoY, rotate: photoRotate }}
+                  src="/naufal-hero.png"
+                  alt=""
+                  role="presentation"
+                  className="absolute inset-0 w-full h-full object-cover object-top scale-110 blur-[14px]"
+                />
+                <div className="absolute inset-0 bg-[#CCFF00]/25 mix-blend-screen" />
+                <div className="absolute inset-0 [filter:hue-rotate(-12deg)_saturate(1.25)] bg-[#CCFF00]/15 mix-blend-overlay" />
+              </div>
 
-          {/* Bayangan hitam tajam agar foto "mencelup" */}
-          <div
-            aria-hidden="true"
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-56 h-10 bg-black/70 blur-md pointer-events-none z-0"
-          />
+              {/* LAPIS FIGUR TAJAM — hanya area spotlight yang terbuka */}
+              <div className="absolute inset-0 z-10 pointer-events-none">
+                <motion.img
+                  style={{ y: photoY, rotate: photoRotate, "--sx": sxStr, "--sy": syStr }}
+                  src="/naufal-hero.png"
+                  alt="Naufal Ghani"
+                  className="absolute inset-0 w-full h-full object-cover object-top scale-[1.08] [-webkit-mask-image:radial-gradient(circle_140px_at_var(--sx,50%)_var(--sy,50%),#000_60%,transparent_100%)] [mask-image:radial-gradient(circle_140px_at_var(--sx,50%)_var(--sy,50%),#000_60%,transparent_100%)]"
+                />
+                {/* Tone hijau mengikuti spotlight */}
+                <div
+                  className="absolute inset-0 mix-blend-screen"
+                  style={{
+                    backgroundImage:
+                      "radial-gradient(circle 190px at var(--sx,50%) var(--sy,50%), rgba(204,255,0,0.32), rgba(204,255,0,0) 100%)",
+                  }}
+                />
+              </div>
 
-          <TiltCard max={10} className="relative z-20 flex justify-center items-end">
-            <div className="[transform:translateZ(60px)]">
-              <motion.img
-                style={{ y: photoY, rotate: photoRotate }}
-                src="/naufal-hero.png"
-                alt="Naufal Ghani"
-                className="h-[480px] sm:h-[600px] lg:h-[660px] xl:h-[700px] w-auto object-contain object-bottom filter brightness-[1.03] contrast-[1.02]"
-              />
+              {/* Petunjuk singkat — hilang setelah kursor digerakkan */}
+              <span
+                className={`absolute bottom-4 left-1/2 -translate-x-1/2 z-20 whitespace-nowrap px-4 py-1.5 rounded-full bg-black/70 border-2 border-[#CCFF00]/60 text-[10px] font-black uppercase tracking-widest text-white transition-opacity duration-500 pointer-events-none select-none ${
+                  touched ? "opacity-0" : "opacity-100"
+                }`}
+              >
+                ✋ Gerakkan kursor untuk membuka fokus
+              </span>
             </div>
           </TiltCard>
-
         </div>
 
       </div>

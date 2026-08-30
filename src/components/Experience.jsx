@@ -59,7 +59,7 @@ export default function Experience() {
           <span className="inline-block px-4 py-1 rounded-full bg-[#2B38F6] text-white text-xs font-black uppercase tracking-wider border border-black">
             EXPERIENCE & TOOLS
           </span>
-          <h2 className="font-display font-black text-4xl sm:text-6xl tracking-tight uppercase text-black">
+          <h2 className="text-glint font-display font-black text-4xl sm:text-6xl tracking-tight uppercase text-black">
             CRAFT & JOURNEY
           </h2>
         </ScrollFade>

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Sparkles, ExternalLink } from "lucide-react";
 import projectsData from "../../public/data/projects.json";
 import { ScrollFade, ScrollSlide, ScrollMarquee, TiltCard } from "@/components/ScrollMotion";
+import { stopScroll, startScroll } from "@/components/SmoothScroll";
 
 const CARD_ACCENTS = ["#CCFF00", "#00E5FF", "#FF4D8D", "#FFB300"];
 
@@ -109,15 +110,17 @@ export default function Projects() {
   useEffect(() => {
     if (!activeModalProject) return;
     document.body.style.overflow = "hidden";
+    stopScroll();
     const onKeyDown = (e) => {
       if (e.key === "Escape") setActiveModalProject(null);
     };
     window.addEventListener("keydown", onKeyDown);
     return () => {
       document.body.style.overflow = "";
+      startScroll();
       window.removeEventListener("keydown", onKeyDown);
     };
-  }, [activeModalProject]);
+  }, [activeModalProject, setActiveModalProject]);
 
   const categories = ["ALL", "UI/UX Design", "Brand & Web Design", "Brand Identity"];
 
@@ -135,7 +138,7 @@ export default function Projects() {
             <div className="inline-block lime-badge px-4 py-1.5 rounded-full text-xs tracking-wider shadow-lg">
               FEATURED PORTFOLIO
             </div>
-            <h2 className="font-display font-black text-4xl sm:text-6xl tracking-tight uppercase">
+            <h2 className="text-glint font-display font-black text-4xl sm:text-6xl tracking-tight uppercase">
               SELECTED WORKS
             </h2>
           </div>

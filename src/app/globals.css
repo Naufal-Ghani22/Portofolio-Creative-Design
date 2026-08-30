@@ -50,6 +50,52 @@ body {
   animation: border-spin 5s linear infinite;
 }
 
+/* Glint menyapu judul besar — kilau pelan, judul tetap terbaca jelas */
+@keyframes glint {
+  0% { background-position: -120% 50%; }
+  100% { background-position: 220% 50%; }
+}
+
+.text-glint {
+  background-image: linear-gradient(
+    100deg,
+    currentColor 48%,
+    rgba(204, 255, 0, 0.45) 56%,
+    rgba(255, 255, 255, 0.9) 60%,
+    rgba(204, 255, 0, 0.45) 64%,
+    currentColor 72%
+  );
+  background-size: 240% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: glint 9s linear infinite;
+}
+
+/* Pulse glow CTA — glow menyala bernapas (tanpa transform agar hover tetap jalan) */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(204, 255, 0, 0), 0 0 18px 2px rgba(204, 255, 0, 0.22);
+  }
+  50% {
+    box-shadow: 0 0 4px 4px rgba(204, 255, 0, 0.1), 0 0 42px 12px rgba(204, 255, 0, 0.55);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2.4s ease-in-out infinite;
+}
+
+/* Hormati preferensi gerak berkurang */
+@media (prefers-reduced-motion: reduce) {
+  .text-glint,
+  .pulse-glow,
+  .animate-border-spin,
+  .animate-marquee {
+    animation: none;
+  }
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;

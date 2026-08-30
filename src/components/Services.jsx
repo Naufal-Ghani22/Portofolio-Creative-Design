@@ -71,14 +71,14 @@ export default function Services() {
         <ScrollFade className="relative flex flex-col lg:flex-row lg:items-end justify-between gap-8">
           <div className="space-y-2">
             <div className="flex flex-wrap items-center gap-3">
-              <h2 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight uppercase text-black">
+              <h2 className="text-glint font-display font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight uppercase text-black">
                 CREATIVE
               </h2>
               <span className="inline-block px-5 py-1.5 rounded-full bg-[#2B38F6] text-white border-2 border-dashed border-black text-xl sm:text-2xl font-black tracking-wider uppercase shadow-md">
                 SOLUTIONS
               </span>
             </div>
-            <h2 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight uppercase text-black">
+            <h2 className="text-glint font-display font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight uppercase text-black">
               JUST FOR YOU
             </h2>
           </div>
@@ -90,7 +90,7 @@ export default function Services() {
 
             <a
               href="#projects"
-              className="shrink-0 px-6 py-3 rounded-full text-xs font-black uppercase tracking-wider bg-[#CCFF00] text-black border-2 border-black hover:scale-105 hover:shadow-lg transition-all duration-300"
+              className="pulse-glow shrink-0 px-6 py-3 rounded-full text-xs font-black uppercase tracking-wider bg-[#CCFF00] text-black border-2 border-black hover:scale-105 transition-all duration-300"
             >
               VIEW ALL
             </a>
