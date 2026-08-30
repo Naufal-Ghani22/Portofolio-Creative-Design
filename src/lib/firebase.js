@@ -1,7 +1,6 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
-// Konfigurasi Firebase dari variabel lingkungan (.env.local)
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -11,8 +10,21 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-// Inisialisasi aplikasi Firebase secara aman (mencegah inisialisasi ganda di SSR)
-const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
-const db = getFirestore(app);
+export const firebaseConfigured = Object.values(firebaseConfig).every(
+  (v) => typeof v === "string" && v.length > 0
+);
+
+let db = null;
+
+if (firebaseConfigured) {
+  const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
+  db = getFirestore(app);
+} else {
+  if (typeof window !== "undefined") {
+    console.warn(
+      "[firebase] Konfigurasi Firebase belum diisi di .env.local. Form kontak akan dinonaktifkan."
+    );
+  }
+}
 
 export { db };

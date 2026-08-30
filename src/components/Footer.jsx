@@ -30,10 +30,7 @@ export default function Footer() {
         </nav>
 
         {/* Copyright & Scroll to Top */}
-        <div className="flex items-center gap-4">
-          <span className="text-[11px] font-bold text-white/60 uppercase">
-            © 2026 NAUFAL GHANI. ALL RIGHTS RESERVED.
-          </span>
+        <div className="flex flex-col items-center md:items-end gap-2">
           <button 
             onClick={scrollToTop}
             aria-label="Scroll back to top"
@@ -41,8 +38,13 @@ export default function Footer() {
           >
             <ArrowUp size={18} />
           </button>
+          <span className="text-[11px] font-bold text-white/60 uppercase text-center md:text-right">
+            © 2026 NAUFAL GHANI. ALL RIGHTS RESERVED.
+          </span>
+          <span className="text-[10px] font-bold text-white/40 uppercase text-center md:text-right">
+            Sidoarjo, Jawa Timur, Indonesia
+          </span>
         </div>
-
       </div>
     </footer>
   );

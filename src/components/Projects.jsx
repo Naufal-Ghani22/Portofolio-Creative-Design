@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ArrowUpRight, Sparkles, ExternalLink } from "lucide-react";
 import projectsData from "../../public/data/projects.json";
 
@@ -8,7 +8,20 @@ export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState("ALL");
   const [activeModalProject, setActiveModalProject] = useState(null);
 
-  const categories = ["ALL", "Brand Identity", "Social Media & Ads", "Pitch Deck", "Print & Packaging"];
+  useEffect(() => {
+    if (!activeModalProject) return;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") setActiveModalProject(null);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [activeModalProject]);
+
+  const categories = ["ALL", "UI/UX Design", "Brand & Web Design", "Brand Identity"];
 
   const filteredProjects = selectedCategory === "ALL"
     ? projectsData
@@ -118,8 +131,11 @@ export default function Projects() {
 
       {/* Case Study Modal */}
       {activeModalProject && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
-          <div className="bg-white text-black max-w-2xl w-full rounded-3xl border-4 border-black p-6 sm:p-8 space-y-6 shadow-2xl relative my-8">
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto" onClick={() => setActiveModalProject(null)}>
+          <div 
+            className="bg-white text-black max-w-2xl w-full rounded-3xl border-4 border-black p-6 sm:p-8 space-y-6 shadow-2xl relative my-8"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button 
               onClick={() => setActiveModalProject(null)}
               className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black text-white font-black flex items-center justify-center hover:bg-[#CCFF00] hover:text-black transition-colors"

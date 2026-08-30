@@ -1,13 +1,25 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const headerRef = useRef(null);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const onClickOutside = (e) => {
+      if (headerRef.current && !headerRef.current.contains(e.target)) {
+        setMobileMenuOpen(false);
+      }
+    };
+    document.addEventListener("click", onClickOutside);
+    return () => document.removeEventListener("click", onClickOutside);
+  }, [mobileMenuOpen]);
 
   return (
-    <header className="w-full bg-[#2B38F6] z-50 px-6 sm:px-12 pt-6 pb-2 sm:pt-6 sm:pb-3">
+    <header ref={headerRef} className="w-full bg-[#2B38F6] z-50 px-6 sm:px-12 pt-6 pb-2 sm:pt-6 sm:pb-3">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         
         {/* Logo */}

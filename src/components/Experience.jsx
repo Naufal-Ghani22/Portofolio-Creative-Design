@@ -1,43 +1,52 @@
 "use client";
 
 import React from "react";
-import { Palette, Trophy, CheckCircle2, Layers } from "lucide-react";
+import { Palette, Trophy, CheckCircle2, Layers, Code2, Megaphone } from "lucide-react";
 
 export default function Experience() {
   const experiences = [
     {
-      year: "2024 - PRESENT",
-      role: "Lead Graphic Designer & Visual Strategist",
-      company: "Freelance & Creative Studio",
-      description: "Merancang identitas merek, kampanye media sosial, pitch deck investor, dan desain kemasan produk berkelas internasional untuk klien global.",
+      year: "2023 - PRESENT",
+      role: "Founder & Creative Director",
+      company: "Firsttime Design",
+      description: "Mendirikan dan mengelola layanan desain kreatif — graphic design, ilustrasi, branding, dan print design — dari konsep hingga hasil akhir untuk berbagai kebutuhan klien.",
     },
     {
-      year: "2023 - 2024",
-      role: "Senior Visual Designer",
-      company: "BrandCraft Agency",
-      description: "Bertanggung jawab atas panduan visual (brand book), ilustrasi digital, dan aset iklan cetak/OOH untuk festival & korporat.",
+      year: "2026 - PRESENT",
+      role: "Airport Technology Intern",
+      company: "PT Angkasa Pura Indonesia",
+      description: "Riset & benchmarking teknologi smart airport internasional untuk transformasi digital Juanda, termasuk konsep Interactive Indoor Mapping, Digital Lost & Found, dan QR Asset Management.",
     },
     {
-      year: "2022 - 2023",
-      role: "Creative Graphic Specialist",
-      company: "AgriLogistics Media",
-      description: "Merancang desain stasioneri korporat, profil perusahaan, laporan tahunan cetak, dan materi promosi Pemasaran.",
+      year: "2025 - 2026",
+      role: "Head of Publication, Design & Documentation",
+      company: "Dies Natalis FIK · Pekan Serasi · ISC 2026",
+      description: "Memimpin tim kreatif untuk branding, strategi publikasi, kampanye media sosial, dan komunikasi visual pada tiga event tingkat fakultas.",
+    },
+    {
+      year: "2024 - 2025",
+      role: "Chief Marketing Officer",
+      company: "Rama Tour & Travel",
+      description: "Mengembangkan strategi pemasaran digital, perencanaan konten media sosial, branding, dan kampanye keterlibatan pelanggan berbasis analisis tren pasar.",
     },
   ];
 
   const skills = [
-    { name: "Adobe Photoshop", category: "Raster Art", icon: <Palette size={16} /> },
-    { name: "Adobe Illustrator", category: "Vector Art", icon: <Palette size={16} /> },
     { name: "Figma (UI & Graphic)", category: "Layout", icon: <Layers size={16} /> },
-    { name: "Adobe InDesign", category: "Editorial", icon: <Palette size={16} /> },
-    { name: "Brand Guidelines", category: "Branding", icon: <Palette size={16} /> },
-    { name: "Print Production", category: "Pre-press", icon: <Layers size={16} /> },
+    { name: "Adobe Illustrator", category: "Vector Art", icon: <Palette size={16} /> },
+    { name: "Adobe Photoshop", category: "Raster & Editing", icon: <Palette size={16} /> },
+    { name: "Affinity Designer", category: "Vector Art", icon: <Palette size={16} /> },
+    { name: "Canva", category: "Quick Visuals", icon: <Megaphone size={16} /> },
+    { name: "CapCut", category: "Motion & Video", icon: <Code2 size={16} /> },
   ];
 
   const awards = [
-    { title: "Juara 1 Desain Kemasan Produk UMKM", detail: "Proyek TaniLink Eco Packaging" },
-    { title: "Best Visual Identity Implementation", detail: "Green Tech Innovation Competition" },
-    { title: "Juara 2 National Graphic Design Hackathon", detail: "Proyek EcoTrade Brand System" },
+    { title: "1st Place Best Solver UI/UX Design", detail: "PLAY IT 2026" },
+    { title: "3rd Place International UI/UX Design", detail: "HACKFEST 2026" },
+    { title: "Top 4 Best UI/UX Design", detail: "SWITCHFEST 2026" },
+    { title: "Top 6 National UI/UX Design", detail: "TECHSPRINT 2026" },
+    { title: "5th Place Business Plan", detail: "AECHIVEST 2026" },
+    { title: "PMW Awardee & Poster Awardee", detail: "PMW 2025 · Artibility Exhibition 2025" },
   ];
 
   return (
@@ -105,7 +114,10 @@ export default function Experience() {
                     <div className="p-2 rounded-lg bg-[#2B38F6] text-[#CCFF00]">
                       {s.icon}
                     </div>
-                    <span>{s.name}</span>
+                    <div>
+                      <div>{s.name}</div>
+                      <div className="text-[9px] font-bold text-black/50">{s.category}</div>
+                    </div>
                   </div>
                 ))}
               </div>

@@ -43,7 +43,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-white/90 text-sm sm:text-base max-w-lg leading-relaxed font-sans font-medium"
           >
-            Selamat datang di studio portofolio Naufal Ghani. Tempat warna dan kebebasan visual bertemu dengan ketajaman logika untuk menghasilkan produk yang solutif.
+            Selamat datang di studio kreatif Naufal Ghani. Spesialis Graphic Design, UI/UX, dan Frontend — tempat warna dan kebebasan visual bertemu ketajaman logika untuk menghasilkan karya yang solutif.
           </motion.p>
 
           {/* CTA Buttons */}
