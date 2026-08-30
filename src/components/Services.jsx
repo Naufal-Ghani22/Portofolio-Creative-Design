@@ -1,6 +1,9 @@
 "use client";
 
 import React from "react";
+import { Square, Triangle, Circle } from "lucide-react";
+import { ScrollFade, ScrollSlide } from "@/components/ScrollMotion";
+import { Float } from "@/components/Decor";
 
 export default function Services() {
   const servicesList = [
@@ -41,12 +44,31 @@ export default function Services() {
     },
   ];
 
+  const slideY = [
+    [70, -30],
+    [40, -70],
+    [90, -20],
+  ];
+
   return (
-    <section id="services" className="w-full bg-[#FAFAFA] text-black py-20 px-6 sm:px-12 relative z-30">
+    <section id="services" className="w-full bg-[#FAFAFA] text-black py-20 px-6 sm:px-12 relative z-30 overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-12">
-        
+
+        {/* Floating Decorative Shapes */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <Float duration={8} delay={0.4} className="absolute top-12 right-[6%] text-[#2B38F6]/10">
+            <Square size={120} strokeWidth={1} />
+          </Float>
+          <Float duration={9} delay={1} className="absolute bottom-32 left-[3%] text-[#2B38F6]/10">
+            <Triangle size={90} strokeWidth={1} />
+          </Float>
+          <Float duration={7} delay={0} className="absolute top-[42%] left-[46%] text-[#CCFF00]/50">
+            <Circle size={24} strokeWidth={2.5} />
+          </Float>
+        </div>
+
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+        <ScrollFade className="relative flex flex-col lg:flex-row lg:items-end justify-between gap-8">
           <div className="space-y-2">
             <div className="flex flex-wrap items-center gap-3">
               <h2 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight uppercase text-black">
@@ -61,64 +83,65 @@ export default function Services() {
             </h2>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 lg:max-w-md">
+          <ScrollSlide y={[40, -40]} className="flex flex-col sm:flex-row items-start sm:items-center gap-6 lg:max-w-md">
             <p className="text-black/80 text-xs sm:text-sm font-semibold leading-relaxed">
               Di studio Naufal Ghani, kami menyediakan rangkaian layanan kreatif komprehensif yang dirancang untuk memanifestasikan visi bisnis Anda secara memukau.
             </p>
-            
-            <a 
-              href="#projects" 
+
+            <a
+              href="#projects"
               className="shrink-0 px-6 py-3 rounded-full text-xs font-black uppercase tracking-wider bg-[#CCFF00] text-black border-2 border-black hover:scale-105 hover:shadow-lg transition-all duration-300"
             >
               VIEW ALL
             </a>
-          </div>
-        </div>
+          </ScrollSlide>
+        </ScrollFade>
 
         {/* Services Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-4">
-          {servicesList.map((service) => (
-            <div 
-              key={service.id}
-              className={`rounded-3xl p-8 border-2 shadow-xl flex flex-col justify-between space-y-8 transition-all duration-300 group ${
-                service.isFeatured 
-                  ? "bg-[#CCFF00] border-black md:col-span-2 lg:col-span-1 hover:scale-[1.02]" 
-                  : "bg-white border-black/10 hover:border-[#2B38F6]"
-              }`}
-            >
-              <div className="space-y-3">
-                <h3 className={`font-display font-black text-2xl sm:text-3xl tracking-tight uppercase text-black ${!service.isFeatured && "group-hover:text-[#2B38F6] transition-colors"}`}>
-                  {service.title}
-                </h3>
-                <p className={`text-xs font-semibold leading-relaxed ${service.isFeatured ? "text-black/80 font-bold" : "text-black/70"}`}>
-                  {service.description}
-                </p>
-              </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-4 relative">
+          {servicesList.map((service, idx) => (
+            <ScrollSlide key={service.id} y={slideY[idx % 3]} className="h-full">
+              <div
+                className={`rounded-3xl p-8 border-2 shadow-xl flex flex-col justify-between space-y-8 transition-all duration-300 group h-full ${
+                  service.isFeatured
+                    ? "bg-[#CCFF00] border-black md:col-span-2 lg:col-span-1 hover:scale-[1.02]"
+                    : "bg-white border-black/10 hover:border-[#2B38F6]"
+                }`}
+              >
+                <div className="space-y-3">
+                  <h3 className={`font-display font-black text-2xl sm:text-3xl tracking-tight uppercase text-black ${!service.isFeatured && "group-hover:text-[#2B38F6] transition-colors"}`}>
+                    {service.title}
+                  </h3>
+                  <p className={`text-xs font-semibold leading-relaxed ${service.isFeatured ? "text-black/80 font-bold" : "text-black/70"}`}>
+                    {service.description}
+                  </p>
+                </div>
 
-              {/* Inner Preview Box */}
-              <div className={`w-full h-44 rounded-2xl border-2 border-black p-4 flex flex-col justify-between relative overflow-hidden group-hover:shadow-lg transition-shadow ${
-                service.isFeatured ? "bg-[#000000]" : "bg-[#2B38F6]"
-              }`}>
-                <div className={`w-full h-full rounded-xl overflow-hidden flex items-center justify-center ${
-                  service.isFeatured ? "bg-white/10" : "bg-black/20"
+                {/* Inner Preview Box */}
+                <div className={`w-full h-44 rounded-2xl border-2 border-black p-4 flex flex-col justify-between relative overflow-hidden group-hover:shadow-lg transition-shadow ${
+                  service.isFeatured ? "bg-[#000000]" : "bg-[#2B38F6]"
                 }`}>
-                  <img 
-                    src={service.image} 
-                    alt={`${service.title} Preview`} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="mt-2 text-center">
-                  <span className={`inline-block px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${
-                    service.isFeatured 
-                      ? "bg-[#CCFF00] text-black border border-black" 
-                      : "bg-black text-[#CCFF00] border border-white/20"
+                  <div className={`w-full h-full rounded-xl overflow-hidden flex items-center justify-center ${
+                    service.isFeatured ? "bg-white/10" : "bg-black/20"
                   }`}>
-                    VIEWS
-                  </span>
+                    <img
+                      src={service.image}
+                      alt={`${service.title} Preview`}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="mt-2 text-center">
+                    <span className={`inline-block px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${
+                      service.isFeatured
+                        ? "bg-[#CCFF00] text-black border border-black"
+                        : "bg-black text-[#CCFF00] border border-white/20"
+                    }`}>
+                      VIEWS
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </ScrollSlide>
           ))}
         </div>
 

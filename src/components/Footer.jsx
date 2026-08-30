@@ -2,6 +2,7 @@
 
 import React from "react";
 import { ArrowUp } from "lucide-react";
+import { ScrollFade } from "@/components/ScrollMotion";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -10,7 +11,7 @@ export default function Footer() {
 
   return (
     <footer className="w-full bg-[#2B38F6] border-t-2 border-white/20 text-white py-12 px-6 sm:px-12 relative z-30">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+      <ScrollFade className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
         
         {/* Logo & Brand */}
         <div className="flex items-center gap-3">
@@ -45,7 +46,7 @@ export default function Footer() {
             Sidoarjo, Jawa Timur, Indonesia
           </span>
         </div>
-      </div>
+      </ScrollFade>
     </footer>
   );
 }

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Mail, MessageCircle, ArrowUpRight, Send } from "lucide-react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db, firebaseConfigured } from "@/lib/firebase";
+import { ScrollFade, ScrollSlide } from "@/components/ScrollMotion";
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -45,7 +46,7 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto space-y-12">
         
         {/* Header */}
-        <div className="space-y-4 max-w-2xl">
+        <ScrollFade className="space-y-4 max-w-2xl">
           <div className="inline-block lime-badge px-4 py-1.5 rounded-full text-xs tracking-wider shadow-lg">
             GET IN TOUCH
           </div>
@@ -55,12 +56,12 @@ export default function Contact() {
           <p className="text-white/90 text-sm sm:text-base font-medium">
             Memiliki proyek baru, ide inovatif, atau sekadar ingin berdiskusi seputar UI/UX Design & Frontend Development? Hubungi saya kapan saja!
           </p>
-        </div>
+        </ScrollFade>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
+
           {/* Contact Direct Cards */}
-          <div className="lg:col-span-5 space-y-6">
+          <ScrollSlide x={[-40, 30]} y={[50, -40]} className="lg:col-span-5 space-y-6">
             
             {/* Email Card */}
             <a 
@@ -140,11 +141,10 @@ export default function Contact() {
                 </a>
               </div>
             </div>
-
-          </div>
+          </ScrollSlide>
 
           {/* Contact Form */}
-          <div className="lg:col-span-7 bg-white text-black p-8 rounded-3xl border-3 border-black shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] space-y-6">
+          <ScrollSlide y={[80, -20]} x={[40, -30]} className="lg:col-span-7 bg-white text-black p-8 rounded-3xl border-3 border-black shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] space-y-6">
             
             <h3 className="font-display font-black text-2xl uppercase text-black border-b-2 border-black pb-3">
               SEND A DIRECT MESSAGE
@@ -219,7 +219,7 @@ export default function Contact() {
               </button>
             </form>
 
-          </div>
+          </ScrollSlide>
 
         </div>
 

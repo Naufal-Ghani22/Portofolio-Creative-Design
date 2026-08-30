@@ -41,6 +41,15 @@ body {
   animation-play-state: paused;
 }
 
+/* Animated Conic Gradient Border */
+@keyframes border-spin {
+  to { transform: rotate(1turn); }
+}
+
+.animate-border-spin {
+  animation: border-spin 5s linear infinite;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
